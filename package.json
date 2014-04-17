@@ -1,0 +1,9 @@
+{
+  "name": "takeone",
+  "description": "a unique sequential number generator and recorder",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "^3.0",
+    "mongodb": "^1.4.0"
+  }
+}

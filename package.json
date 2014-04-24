@@ -1,9 +1,12 @@
 {
-  "name": "takeone",
+  "name": "deli",
   "description": "a unique sequential number generator and recorder",
   "version": "0.0.1",
   "dependencies": {
+    "body-parser": "^1.0.2",
     "express": "^3.0",
-    "mongodb": "^1.4.0"
+    "method-override": "^1.0.0",
+    "mongoose": "^3.8.8",
+    "morgan": "^1.0.0"
   }
 }

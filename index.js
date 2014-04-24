@@ -1,16 +1,32 @@
-var http = require('http'),
-    express = require('express'),
-    tickets = require('./tickets'),
-    mongodb = require('mongodb'),
-    app = express();
+var http = require('http')
+  , express = require('express')
+  , morgan = require('morgan')
+  , tickets = require('./routes/tickets')
+  , mongoose = require('mongoose')
+  , app = express();
 
-app.configure(function() {
-  app.use(express.logger('dev'));
-  app.use(express.bodyParser());
-})
+mongoose.connect('mongodb://localhost/ticket_roll');
 
-app.post('/tickets', tickets.createTicket);
+var env = process.env.NODE_ENV || 'development';
 
-app.listen(process.env.PORT || 2222);
+app.use(require('body-parser')());
+app.use(require('method-override')());
 
-console.log('taking one');
+if ('development' == env) {
+  app.set('port', 2222);
+  app.use(morgan({ format: 'dev', immediate: true }));
+}
+
+if ('production' == env) {
+  app.set('port', process.env.PORT);
+  app.use(morgan());
+}
+
+app.get('/', tickets.index);
+app.post('/tickets', tickets.create);
+app.get('/tickets/:code', tickets.show);
+app.put('/tickets', tickets.update);
+app.del('/tickets', tickets.delete);
+// app.get('/ticket:context', tickets.createTicket);
+
+app.listen(app.get('port'));

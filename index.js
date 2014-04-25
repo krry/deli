@@ -23,10 +23,10 @@ if ('production' == env) {
 }
 
 app.get('/', tickets.index);
-app.post('/tickets', tickets.create);
 app.get('/tickets/:code', tickets.show);
+app.get('/tickets', tickets.showall);
+app.post('/tickets', tickets.create);
 app.put('/tickets', tickets.update);
 app.del('/tickets', tickets.delete);
-// app.get('/ticket:context', tickets.createTicket);
 
 app.listen(app.get('port'));

@@ -2,6 +2,10 @@ var Ticket = require('../models/ticket').Ticket;
 var helper = require('../helpers/helper');
 
 exports.index = function(req, res) {
+  res.send("welcome to krry's deli");
+}
+
+exports.showall = function(req, res) {
   Ticket.find({}, function(err, docs) {
     if (!err) {
       res.json(200, { tickets: docs });
@@ -45,8 +49,6 @@ exports.create = function(req, res) {
 }
 
 exports.show = function(req, res){
-  var code = req.params.code;
-
   Ticket.find({ code: code }, function(err, doc){
     if (!err && doc) {
       res.json(200, doc);

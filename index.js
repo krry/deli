@@ -5,6 +5,7 @@ var http = require('http')
   , mongoose = require('mongoose')
   , path = require('path')
   , exphbs = require('express3-handlebars')
+  , favicon = require('static-favicon')
   , app = express();
 
 var hbs = exphbs.create({
@@ -19,9 +20,9 @@ var env = process.env.NODE_ENV || 'development';
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.use(express.favicon());
 app.use(require('body-parser')());
 app.use(require('method-override')());
+app.use(favicon(__dirname + '/app/favicon.ico'));
 
 if ('development' == env) {
   app.set('port', 2222);

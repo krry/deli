@@ -2,7 +2,9 @@ var Ticket = require('../models/ticket').Ticket;
 var helper = require('../helpers/helper');
 
 exports.index = function(req, res) {
-  res.send("welcome to krry's deli");
+  res.render('index', {
+    title: 'Hello welcome'
+  });
 }
 
 exports.showall = function(req, res) {

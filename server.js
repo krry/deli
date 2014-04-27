@@ -9,7 +9,6 @@ var http = require('http')
   , app = express();
 
 var hbs = exphbs.create({
-  extName: '.hbs',
   defaultLayout: 'main'
 });
 
@@ -20,6 +19,7 @@ var env = process.env.NODE_ENV || 'development';
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
 app.use(require('body-parser')());
 app.use(require('method-override')());
 app.use(favicon(__dirname + '/app/favicon.ico'));

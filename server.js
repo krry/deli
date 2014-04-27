@@ -16,13 +16,16 @@ mongoose.connect('mongodb://localhost/ticket_roll');
 
 var env = process.env.NODE_ENV || 'development';
 
-app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.join(__dirname, 'views'));
+app.set('views', __dirname + '/app');
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(require('body-parser')());
 app.use(require('method-override')());
 app.use(favicon(__dirname + '/app/favicon.ico'));
+app.use(express.static(__dirname + '/app'));
+
 
 if ('development' == env) {
   app.set('port', 2222);

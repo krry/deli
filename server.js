@@ -1,6 +1,6 @@
 var http = require('http')
   , express = require('express')
-  , morgan = require('morgan')
+  , logger = require('morgan')
   , tickets = require('./routes/tickets')
   , mongoose = require('mongoose')
   , path = require('path')
@@ -16,6 +16,7 @@ mongoose.connect('mongodb://localhost/ticket_roll');
 
 var env = process.env.NODE_ENV || 'development';
 
+app.use(express.static(__dirname + '/app'));
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -26,12 +27,12 @@ app.use(favicon(__dirname + '/app/favicon.ico'));
 
 if ('development' == env) {
   app.set('port', 2222);
-  app.use(morgan({ format: 'dev', immediate: true }));
+  app.use(logger({ format: 'dev', immediate: true }));
 }
 
 if ('production' == env) {
   app.set('port', process.env.PORT);
-  app.use(morgan());
+  app.use(logger());
 }
 
 app.get('/', tickets.index);

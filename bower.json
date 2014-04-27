@@ -1,0 +1,22 @@
+{
+  "name": "deli",
+  "version": "0.0.1",
+  "homepage": "https://github.com/krry/deli",
+  "authors": [
+    "marsh <justinmarshall73@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/js/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.2.16",
+    "angular-sanitize": "~1.2.16",
+    "angular-resource": "~1.2.16"
+  }
+}

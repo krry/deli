@@ -6,7 +6,13 @@
 </head>
 <body ng-app="deliApp">
 
-  <div ng-view=""></div>
+  <div ng-controller="deliCtrl">
+    <button ng-click="makeTicket()">Create Ticket</button>
+    <br>
+    <input type="text" ng-model="number">
+    <br>
+    <li ng-repeat="ticket in tickets.tickets | filter:number">{{ticket}}</li>
+  </div>
   <script src="js/vendor/angular/angular.js"></script>
   <script src="js/vendor/angular-route/angular-route.js"></script>
   <script src="js/vendor/angular-resource/angular-resource.js"></script>

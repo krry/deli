@@ -101,3 +101,14 @@ exports.delete = function(req, res) {
     }
   })
 }
+// exports.deleteall = function(req, res) {
+//   Ticket.find(function(err, docs) {
+//     if (!err && docs) {
+//       console.log(docs);
+//     }
+//     else {
+//       res.json(500, { message: err });
+//       console.log('broken');
+//     }
+//   });
+// }

@@ -7,11 +7,15 @@
 <body ng-app="deliApp">
 
   <div ng-controller="deliCtrl">
+  <h4>Click to create a ticket!</h4>
     <button ng-click="makeTicket()">Create Ticket</button>
+    <!-- <button ng-click="killTickets()">Kill Tickets</button> -->
     <br>
+    <h4>Use to filter through each ticket - useless as of now</h4>
     <input type="text" ng-model="number">
     <br>
-    <li ng-repeat="ticket in tickets.tickets | filter:number">{{ticket}}</li>
+    List of the 5 most recent tickets - also pretty useless
+    <li ng-repeat="ticket in tickets.tickets | filter:number | limitTo: -5">{{ticket.code | ticketRead}}</li>
   </div>
   <script src="js/vendor/angular/angular.js"></script>
   <script src="js/vendor/angular-route/angular-route.js"></script>

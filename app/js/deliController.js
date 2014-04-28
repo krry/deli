@@ -10,6 +10,7 @@ angular.module('deliApp')
   .controller('deliCtrl', function ($scope, Tickets, TicketsAll) {
     window.tickets = Tickets;
     window.ticketsall = TicketsAll;
+
     $scope.tickets = Tickets.get();
     $scope.makeTicket = function(){
       Tickets.save({context:'jm'}, function(resp){
@@ -28,3 +29,4 @@ angular.module('deliApp')
       return ticket;
     };
   });
+

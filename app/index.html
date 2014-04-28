@@ -16,6 +16,7 @@
     <br>
     List of the 5 most recent tickets - also pretty useless
     <li ng-repeat="ticket in tickets.tickets | filter:number | limitTo: -5">{{ticket.code | ticketRead}}</li>
+
   </div>
   <script src="js/vendor/angular/angular.js"></script>
   <script src="js/vendor/angular-route/angular-route.js"></script>
